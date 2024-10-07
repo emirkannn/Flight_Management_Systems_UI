@@ -1,0 +1,23 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    flex: 1; /* Sayfa içeriğini genişletmek için */
+}
+
+footer.footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Yüksekliği tam sayfa olacak şekilde ayarlayın */
+}
+

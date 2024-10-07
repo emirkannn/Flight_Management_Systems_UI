@@ -1,0 +1,41 @@
+<h2>Havalimanı Listesi</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Havalimanı Kodu</th>
+            <th>Havalimanı Adı</th>
+            <th>Şehir</th>
+            <th>Ülke</th>
+            <th>Seferler</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let airport of airports">
+            <td>{{airport.code}}</td>
+            <td>{{airport.name}}</td>
+            <td>{{airport.city}}</td>
+            <td>{{airport.country}}</td>
+            <td>
+                <button type="button" class="btn btn-success" (click)="showArrivals(airport.id!)">İnişler</button>
+                <button type="button" class="btn btn-danger" (click)="showDepartures(airport.id!)">Kalkışlar</button>
+            </td>
+            <td>
+                <button (click)="updateAirport(airport.id!)" class="btn btn-info">Güncelle</button>
+                <button (click)="deleteAirport(airport.id!)" class="btn btn-danger" style="margin-left: 10px;">Sil</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="text-end mt-3">
+    <button class="btn btn-primary" 
+            style="width: 80px; height: 60px; font-size: 12px; padding: 0;" 
+            (click)="goToCreateAirport()">
+      Havalimanı    
+      Ekle
+    </button>
+  </div>
+  
+

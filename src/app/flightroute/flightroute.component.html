@@ -1,0 +1,20 @@
+<h2>Uçuş Rotası</h2>
+
+<table class="table table-striped" *ngIf="flightroute">
+  <thead>
+    <tr>
+      <th>Uçuş Numarası</th>
+      <th>Kalkış Havalimanı</th>
+      <th>Varış Havalimanı</th>
+      <th>Yükseklik</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ flightroute.id }}</td>
+      <td>{{ flightroute.source?.name }}</td>
+      <td>{{ flightroute.destination?.name }}</td>
+      <td>{{ flightroute.distanceInMiles }} feet</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,32 @@
+<div class="col-md-6 offset-md-3">
+
+    <h4>Yeni Uçuş Ekle</h4>
+    
+    <form (ngSubmit)="onSubmit()"> 
+        <div class="form-group">
+            <label for="destinationId">İniş yapılacak Havaalanı </label>
+            <select class="form-control" id="destinationId"
+                [(ngModel)]="createRouteDto.destinationId" name="destinationId">
+                <option value="" disabled>Havaalanı seçin</option> <!-- İlk seçenek, seçilmesini engellemek için -->
+                <option *ngFor="let airport of airports" [value]="airport.id">{{ airport.name }}</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label for="sourceId">Kalkış yapılacak Havaalanı</label>
+            <select class="form-control" id="sourceId"
+                [(ngModel)]="createRouteDto.sourceId" name="sourceId">
+                <option value="" disabled>Havaalanı seçin</option> <!-- İlk seçenek, seçilmesini engellemek için -->
+                <option *ngFor="let airport of airports" [value]="airport.id">{{ airport.name }}</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label>Yükseklik (Feet)</label>
+            <input type="number" class="form-control" id="distanceInMiles"
+                [(ngModel)]="createRouteDto.distanceInMiles" name="distanceInMiles">
+        </div>
+    
+        <button class="btn btn-success" type="submit">Rota Oluştur</button>
+    </form>
+    </div>

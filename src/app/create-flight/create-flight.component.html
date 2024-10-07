@@ -1,0 +1,66 @@
+<div class="col-md-6 offset-md-3">
+
+<h4>Yeni Uçuş Ekle</h4>
+
+<form (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+        <label>Uçuş Kodu</label>
+        <input type="text" class="form-control" id="flightNumber"
+            [(ngModel)]="createflightdto.flightNumber" name="flightNumber">
+    </div>
+
+    <div class="form-group">
+        <label for="routeId">Rota </label>
+        <select class="form-control" id="route_id"
+            [(ngModel)]="createflightdto.routeId" name="routeId">
+            <option value="" disabled>Rota seçin</option> <!-- İlk seçenek, seçilmesini engellemek için -->
+            <option *ngFor="let route of routes" [value]="route.id">{{ route.source?.name }} ve {{ route.destination?.name }} </option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="arrivalAirportId">İniş yapılacak Havaalanı </label>
+        <select class="form-control" id="arrivalAirportId"
+            [(ngModel)]="createflightdto.arrivalAirportId" name="arrivalAirportId">
+            <option value="" disabled>Havaalanı seçin</option> <!-- İlk seçenek, seçilmesini engellemek için -->
+            <option *ngFor="let airport of airports" [value]="airport.id">{{ airport.name }}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="departureAirportId">Kalkış yapılacak Havaalanı</label>
+        <select class="form-control" id="departureAirportId"
+            [(ngModel)]="createflightdto.departureAirportId" name="departureAirportId">
+            <option value="" disabled>Havaalanı seçin</option> <!-- İlk seçenek, seçilmesini engellemek için -->
+            <option *ngFor="let airport of airports" [value]="airport.id">{{ airport.name }}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Uçuş ücreti</label>
+        <input type="number" class="form-control" id="price"
+            [(ngModel)]="createflightdto.price" name="price">
+    </div>
+
+    <div class="form-group">
+        <label>İniş Tarihi</label>
+        <input type="datetime-local" class="form-control" id="departureTime"
+            [(ngModel)]="createflightdto.departureTime" name="departureTime">
+    </div>
+
+    <div class="form-group">
+        <label>Kalkış Tarihi</label>
+        <input type="datetime-local" class="form-control" id="arrivalTime"
+            [(ngModel)]="createflightdto.arrivalTime" name="arrivalTime">
+    </div>
+
+    <div class="form-group">
+        <label>Koltuk Sayısı</label>
+        <input type="number" class="form-control" id="capacity"
+            [(ngModel)]="createflightdto.capacity" name="capacity">
+    </div>
+
+    <button class="btn btn-success" type="submit">Uçuş Ekle</button>
+</form>
+</div>

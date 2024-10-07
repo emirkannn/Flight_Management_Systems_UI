@@ -1,0 +1,29 @@
+<h2>Uçuş Listesi - {{ type === 'arrivals' ? 'İnişler' : 'Kalkışlar' }}</h2>
+
+<table class="table table-striped" *ngIf="flights.length > 0">
+  <thead>
+    <tr>
+      <th>Uçuş Numarası</th>
+      <th>Kalkış Havalimanı</th>
+      <th>Varış Havalimanı</th>
+      <th>Fiyat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let flight of flights">
+      <td>{{ flight.flightNumber }}</td>
+      <td>{{ flight.departureAirport?.name }}</td>
+      <td>{{ flight.arrivalAirport?.name }}</td>
+      <td>{{ flight.price }}$</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="text-end mt-3">
+    <button class="btn btn-primary" 
+            style="width: 80px; height: 60px; font-size: 12px; padding: 0;" 
+            (click)="goToAddFlight()">
+      Uçuş    
+      Ekle
+    </button>
+  </div>
