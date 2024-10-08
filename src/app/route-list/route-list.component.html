@@ -1,44 +1,53 @@
-<h2>Rota Listesi</h2>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Kalkış Havaalanı Kodu</th>
-            <th>Kalkış Şehri</th>
-            <th>Kalkış Ülkesi</th>
-            <th>Kalkış Havaalanı Adı</th>
-            <th>Varış Havaalanı Kodu</th>
-            <th>Varış Şehri</th>
-            <th>Varış Ülkesi</th>
-            <th>Varış Havaalanı Adı</th>
-            <th>Yükseklik</th>
+<h6 class="text-center my-4" style="font-size: 2.5rem; font-weight: 600; color:black; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);">
+    Rota Listesi
+    </h6>
+<div class="table-responsive">
+    <table class="table table-hover table-bordered align-middle" style="background-color: #2c2c2c; color: #e0e0e0;">
+        <thead class="table-dark text-center" style="background-color: #444444;">
+            <tr>
+                <th>Kalkış Havaalanı Kodu</th>
+                <th>Kalkış Şehri</th>
+                <th>Kalkış Ülkesi</th>
+                <th>Kalkış Havaalanı Adı</th>
+                <th>Varış Havaalanı Kodu</th>
+                <th>Varış Şehri</th>
+                <th>Varış Ülkesi</th>
+                <th>Varış Havaalanı Adı</th>
+                <th>Yükseklik</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let route of routes; let i = index" class="text-center">
+                <td>{{route.source?.code}}</td>
+                <td>{{route.source?.country}}</td>
+                <td>{{route.source?.city}}</td>
+                <td>{{route.source?.name}}</td>
+                <td>{{route.destination?.code}}</td>
+                <td>{{route.destination?.country}}</td>
+                <td>{{route.destination?.city}}</td>
+                <td>{{route.destination?.name}}</td>
+                <td>{{route.distanceInMiles}} feet</td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button"  class="btn btn-sm btn-outline-warning" (click)="updateRoute(route.id)">
+                            <i class="bi bi-pencil-fill"></i> Düzenle
+                        </button>
+                        <button (click)="deleteRoute(route.id!)" class="btn btn-sm btn-outline-danger ms-2">
+                            <i class="bi bi-trash-fill"></i> Sil
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let route of routes; let i = index">
-            <td>{{route.source?.code}}</td>
-            <td>{{route.source?.country}}</td>
-            <td>{{route.source?.city}}</td>
-            <td>{{route.source?.name}}</td>
-            <td>{{route.destination?.code}}</td>
-            <td>{{route.destination?.country}}</td>
-            <td>{{route.destination?.city}}</td>
-            <td>{{route.destination?.name}}</td>
-            <td>{{route.distanceInMiles}} feet</td>
-            <td>
-                <div class="btn-group">
-                    <button type="button"  class="btn btn-info" (click)="updateRoute(route.id)">Düzenle</button>
-                    <button (click)="deleteRoute(route.id!)" class="btn btn-danger" style="margin-left: 10px;">Sil</button>
-                </div>
-            </td>
-    </tbody>
-</table>
-
-<div class="text-end mt-3">
-    <button class="btn btn-primary" 
-            style="width: 80px; height: 60px; font-size: 12px; padding: 0;" 
+<div class="text-end mt-4">
+    <button class="btn btn-lg btn-primary shadow-sm d-flex align-items-center justify-content-center"
+            style="width: 80px; height: 60px; font-size: 14px; padding: 0;" 
             (click)="goToCreateRoute()">
-      Rota    
-      Ekle
+        <i class="bi bi-plus-circle"></i>  
+        Ekle
     </button>
-  </div>
+</div>

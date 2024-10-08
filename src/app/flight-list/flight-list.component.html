@@ -1,59 +1,63 @@
-<h2>Uçuş Listesi</h2>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Uçuş Numarası</th>
-            <th>Kalkış Havaalanı Kodu</th>
-            <th>Kalkış Havaalanı Adı</th>
-            <th>Kalkış Şehri</th>
-            <th>Kalkış Ülkesi</th>
-            <th>Varış Havaalanı Kodu</th>
-            <th>Varış Havaalanı Adı</th>
-            <th>Varış Şehri</th>
-            <th>Varış Ülkesi</th>
-            <th>Fiyat</th>
-            <th>Koltuk Sayısı</th>
-            <th>Durum</th>
-            <th>Rota</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Uçuşlar Listesi -->
-        <tr *ngFor="let flight of flights; let i = index">
-            <td>{{flight.flightNumber}}</td>
-            <td>{{flight.departureAirport?.code}}</td>
-            <td>{{flight.departureAirport?.name}}</td>
-            <td>{{flight.departureAirport?.city}}</td>
-            <td>{{flight.departureAirport?.country}}</td>
-            <td>{{flight.arrivalAirport?.code}}</td>
-            <td>{{flight.arrivalAirport?.name}}</td>
-            <td>{{flight.arrivalAirport?.city}}</td>
-            <td>{{flight.arrivalAirport?.country}}</td>
-            <td>{{flight.price}}$</td>
-            <td>{{flight.capacity}}</td>
-            <td>{{flight.status}}</td>
-            <td>
-                <button type="button" class="btn btn-outline-success" (click)="goToRoute(flight.id!)">
-                  Uçuş Rotası
-                </button>
-              </td>
-              
-            <td>
-                <div class="btn-group">
-                <button type="button" class="btn btn-info" (click)="updateFlight(flight.id!)">Düzenle</button>
-                <button (click)="deleteFlight(flight.id!)" class="btn btn-danger" style="margin-left: 10px;">Sil</button>
-            </div>
-            </td>
-            
-    </tbody>
-</table>
+<h6 class="text-center my-4" style="font-size: 2.5rem; font-weight: 600; color:black; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);">
+  Uçuş Listesi
+  </h6>
+<div class="table-responsive">
+    <table class="table table-hover table-bordered align-middle text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Uçuş Numarası</th>
+                <th>Kalkış Havaalanı Kodu</th>
+                <th>Kalkış Havaalanı Adı</th>
+                <th>Kalkış Şehri</th>
+                <th>Kalkış Ülkesi</th>
+                <th>Varış Havaalanı Kodu</th>
+                <th>Varış Havaalanı Adı</th>
+                <th>Varış Şehri</th>
+                <th>Varış Ülkesi</th>
+                <th>Fiyat</th>
+                <th>Koltuk Sayısı</th>
+                <th>Durum</th>
+                <th>Rota</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Uçuşlar Listesi -->
+            <tr *ngFor="let flight of flights; let i = index">
+                <td>{{flight.flightNumber}}</td>
+                <td>{{flight.departureAirport?.code}}</td>
+                <td>{{flight.departureAirport?.name}}</td>
+                <td>{{flight.departureAirport?.city}}</td>
+                <td>{{flight.departureAirport?.country}}</td>
+                <td>{{flight.arrivalAirport?.code}}</td>
+                <td>{{flight.arrivalAirport?.name}}</td>
+                <td>{{flight.arrivalAirport?.city}}</td>
+                <td>{{flight.arrivalAirport?.country}}</td>
+                <td>{{flight.price}}$</td>
+                <td>{{flight.capacity}}</td>
+                <td>
+                    <button type="button" class="btn btn-outline-primary btn-sm" (click)="goToRoute(flight.id!)">
+                        <i class="bi bi-map"></i> Rota
+                    </button>
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-warning btn-sm" (click)="updateFlight(flight.id!)">
+                            <i class="bi bi-pencil"></i> Düzenle
+                        </button>
+                        <button (click)="deleteFlight(flight.id!)" class="btn btn-danger btn-sm ms-2">
+                            <i class="bi bi-trash"></i> Sil
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
-<div class="text-end mt-3">
-    <button class="btn btn-primary" 
-            style="width: 80px; height: 60px; font-size: 12px; padding: 0;" 
+<div class="d-flex justify-content-end mt-4">
+    <button class="btn btn-primary d-flex align-items-center" style="font-size: 14px; padding: 10px 20px;" 
             (click)="goToCreateFlight()">
-      Uçuş    
-      Ekle
+        <i class="bi bi-plus-circle me-2"></i> Uçuş Ekle
     </button>
-  </div>
+</div>

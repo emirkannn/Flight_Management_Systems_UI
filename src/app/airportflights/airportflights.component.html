@@ -1,29 +1,32 @@
-<h2>Uçuş Listesi - {{ type === 'arrivals' ? 'İnişler' : 'Kalkışlar' }}</h2>
+<h2 class="text-center mb-4">
+  Uçuş Listesi - {{ type === 'arrivals' ? 'İnişler' : 'Kalkışlar' }}
+</h2>
 
-<table class="table table-striped" *ngIf="flights.length > 0">
-  <thead>
-    <tr>
-      <th>Uçuş Numarası</th>
-      <th>Kalkış Havalimanı</th>
-      <th>Varış Havalimanı</th>
-      <th>Fiyat</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let flight of flights">
-      <td>{{ flight.flightNumber }}</td>
-      <td>{{ flight.departureAirport?.name }}</td>
-      <td>{{ flight.arrivalAirport?.name }}</td>
-      <td>{{ flight.price }}$</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-responsive">
+  <table class="table table-borderless table-hover">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">Uçuş Numarası</th>
+        <th scope="col">Kalkış Havalimanı</th>
+        <th scope="col">Varış Havalimanı</th>
+        <th scope="col">Fiyat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let flight of flights" class="align-middle">
+        <td>{{ flight.flightNumber }}</td>
+        <td>{{ flight.departureAirport?.name }}</td>
+        <td>{{ flight.arrivalAirport?.name }}</td>
+        <td>{{ flight.price }}$</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-<div class="text-end mt-3">
-    <button class="btn btn-primary" 
-            style="width: 80px; height: 60px; font-size: 12px; padding: 0;" 
-            (click)="goToAddFlight()">
-      Uçuş    
-      Ekle
-    </button>
-  </div>
+<div class="d-flex justify-content-end mt-4">
+  <button class="btn btn-primary" 
+          style="width: 120px; height: 50px; font-size: 14px;" 
+          (click)="goToAddFlight()">
+    Uçuş Ekle
+  </button>
+</div>

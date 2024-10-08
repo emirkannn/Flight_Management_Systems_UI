@@ -1,32 +1,68 @@
-<div class="col-md-6 offset-md-3">
-
-    <h4>Yeni Uçuş Ekle</h4>
-    
-    <form (ngSubmit)="onSubmit()"> 
-        <div class="form-group">
-            <label for="destinationId">İniş yapılacak Havaalanı </label>
-            <select class="form-control" id="destinationId"
-                [(ngModel)]="createRouteDto.destinationId" name="destinationId">
-                <option value="" disabled>Havaalanı seçin</option> <!-- İlk seçenek, seçilmesini engellemek için -->
-                <option *ngFor="let airport of airports" [value]="airport.id">{{ airport.name }}</option>
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="card bg-dark text-white shadow-lg">
+      <div class="card-header bg-secondary text-center">
+        <h4>Yeni Uçuş Ekle</h4>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit()">
+          <div class="form-group mb-3">
+            <label for="destinationId" class="form-label">İniş yapılacak Havaalanı</label>
+            <select
+              class="form-control bg-dark text-white border-secondary"
+              id="destinationId"
+              [(ngModel)]="createRouteDto.destinationId"
+              name="destinationId"
+              required
+            >
+              <option value="" disabled>Havaalanı seçin</option>
+              <option
+                *ngFor="let airport of airports"
+                [value]="airport.id"
+                class="bg-dark text-white"
+                >{{ airport.name }}</option
+              >
             </select>
-        </div>
-    
-        <div class="form-group">
-            <label for="sourceId">Kalkış yapılacak Havaalanı</label>
-            <select class="form-control" id="sourceId"
-                [(ngModel)]="createRouteDto.sourceId" name="sourceId">
-                <option value="" disabled>Havaalanı seçin</option> <!-- İlk seçenek, seçilmesini engellemek için -->
-                <option *ngFor="let airport of airports" [value]="airport.id">{{ airport.name }}</option>
+          </div>
+  
+          <div class="form-group mb-3">
+            <label for="sourceId" class="form-label">Kalkış yapılacak Havaalanı</label>
+            <select
+              class="form-control bg-dark text-white border-secondary"
+              id="sourceId"
+              [(ngModel)]="createRouteDto.sourceId"
+              name="sourceId"
+              required
+            >
+              <option value="" disabled>Havaalanı seçin</option>
+              <option
+                *ngFor="let airport of airports"
+                [value]="airport.id"
+                class="bg-dark text-white"
+                >{{ airport.name }}</option
+              >
             </select>
-        </div>
-    
-        <div class="form-group">
-            <label>Yükseklik (Feet)</label>
-            <input type="number" class="form-control" id="distanceInMiles"
-                [(ngModel)]="createRouteDto.distanceInMiles" name="distanceInMiles">
-        </div>
-    
-        <button class="btn btn-success" type="submit">Rota Oluştur</button>
-    </form>
+          </div>
+  
+          <div class="form-group mb-4">
+            <label for="distanceInMiles" class="form-label">Yükseklik (Feet)</label>
+            <input
+              type="number"
+              class="form-control bg-dark text-white border-secondary"
+              id="distanceInMiles"
+              placeholder="Yükseklik girin"
+              [(ngModel)]="createRouteDto.distanceInMiles"
+              name="distanceInMiles"
+              required
+            />
+          </div>
+  
+          <div class="d-grid">
+            <button class="btn btn-lg btn-success shadow-sm" type="submit">
+              Rota Oluştur
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
+  

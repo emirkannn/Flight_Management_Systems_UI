@@ -1,41 +1,49 @@
-<h2>Havalimanı Listesi</h2>
+<h6 class="text-center my-4" style="font-size: 2.5rem; font-weight: 600; color:black; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);">
+Havalimanları Listesi
+</h6>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Havalimanı Kodu</th>
-            <th>Havalimanı Adı</th>
-            <th>Şehir</th>
-            <th>Ülke</th>
-            <th>Seferler</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let airport of airports">
-            <td>{{airport.code}}</td>
-            <td>{{airport.name}}</td>
-            <td>{{airport.city}}</td>
-            <td>{{airport.country}}</td>
-            <td>
-                <button type="button" class="btn btn-success" (click)="showArrivals(airport.id!)">İnişler</button>
-                <button type="button" class="btn btn-danger" (click)="showDepartures(airport.id!)">Kalkışlar</button>
-            </td>
-            <td>
-                <button (click)="updateAirport(airport.id!)" class="btn btn-info">Güncelle</button>
-                <button (click)="deleteAirport(airport.id!)" class="btn btn-danger" style="margin-left: 10px;">Sil</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
 
-<div class="text-end mt-3">
-    <button class="btn btn-primary" 
-            style="width: 80px; height: 60px; font-size: 12px; padding: 0;" 
-            (click)="goToCreateAirport()">
-      Havalimanı    
-      Ekle
+<div class="table-responsive">
+    <table class="table table-hover table-bordered align-middle">
+        <thead class="table-primary text-center">
+            <tr>
+                <th>Havalimanı Kodu</th>
+                <th>Havalimanı Adı</th>
+                <th>Şehir</th>
+                <th>Ülke</th>
+                <th>Seferler</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let airport of airports" class="text-center">
+                <td><span class="badge bg-info fs-6">{{ airport.code }}</span></td>
+                <td>{{ airport.name }}</td>
+                <td>{{ airport.city }}</td>
+                <td>{{ airport.country }}</td>
+                <td>
+                    <button type="button" class="btn btn-outline-success btn-sm mx-1" (click)="showArrivals(airport.id!)">
+                        İnişler
+                    </button>
+                    <button type="button" class="btn btn-outline-danger btn-sm mx-1" (click)="showDepartures(airport.id!)">
+                        Kalkışlar
+                    </button>
+                </td>
+                <td>
+                    <button (click)="updateAirport(airport.id!)" class="btn btn-info btn-sm mx-1">
+                        <i class="bi bi-pencil-square"></i> Güncelle
+                    </button>
+                    <button (click)="deleteAirport(airport.id!)" class="btn btn-danger btn-sm mx-1">
+                        <i class="bi bi-trash"></i> Sil
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="d-flex justify-content-end mt-3">
+    <button class="btn btn-primary btn-lg" (click)="goToCreateAirport()">
+        <i class="bi bi-plus-circle"></i> Havalimanı Ekle
     </button>
-  </div>
-  
-
+</div>

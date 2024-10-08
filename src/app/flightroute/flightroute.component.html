@@ -1,20 +1,12 @@
 <h2>Uçuş Rotası</h2>
 
-<table class="table table-striped" *ngIf="flightroute">
-  <thead>
-    <tr>
-      <th>Uçuş Numarası</th>
-      <th>Kalkış Havalimanı</th>
-      <th>Varış Havalimanı</th>
-      <th>Yükseklik</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>{{ flightroute.id }}</td>
-      <td>{{ flightroute.source?.name }}</td>
-      <td>{{ flightroute.destination?.name }}</td>
-      <td>{{ flightroute.distanceInMiles }} feet</td>
-    </tr>
-  </tbody>
-</table>
+<div class="card mb-3" *ngIf="flightroute">
+  <div class="card-header">
+    <h5 class="card-title">Uçuş Numarası: {{ flightroute.id }}</h5>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><strong>Kalkış Havalimanı:</strong> {{ flightroute.source?.name }}</p>
+    <p class="card-text"><strong>Varış Havalimanı:</strong> {{ flightroute.destination?.name }}</p>
+    <p class="card-text"><strong>Yükseklik:</strong> {{ flightroute.distanceInMiles }} feet</p>
+  </div>
+</div>

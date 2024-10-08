@@ -1,34 +1,65 @@
-<div class="col-md-6 offset-md-3">
-
-    <h4>Rota Düzenle</h4>
-    
-    <form (ngSubmit)="onSubmit()">
-    
-        <div class="form-group">
-            <label for="sourceAirportId">Kalkış yapılacak Havaalanı</label>
-            <select class="form-control" id="sourceAirportId"
-                [(ngModel)]="updateRoute.sourceAirportId" name="sourceAirportId">
+<div class="col-md-8 offset-md-2 mt-5">
+    <div class="card bg-dark text-white shadow-lg border-0 rounded-3">
+      <div class="card-header bg-secondary text-center">
+        <h4>Rota Düzenle</h4>
+      </div>
+      <div class="card-body p-4">
+        <form (ngSubmit)="onSubmit()">
+  
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="sourceAirportId" class="form-label">Kalkış Havaalanı</label>
+              <select
+                class="form-control bg-dark text-white border-secondary"
+                id="sourceAirportId"
+                [(ngModel)]="updateRoute.sourceAirportId"
+                name="sourceAirportId"
+                required
+              >
                 <option value="" disabled>Havaalanı seçin</option>
-                <option *ngFor="let airport of airports" [value]="airport.id">{{ airport.name }}</option>
-            </select>
-        </div>
-    
-        <div class="form-group">
-            <label for="destinationAirportId">İniş yapılacak Havaalanı </label>
-            <select class="form-control" id="destinationAirportId"
-                [(ngModel)]="updateRoute.destinationAirportId" name="destinationAirportId">
+                <option *ngFor="let airport of airports" [value]="airport.id">
+                  {{ airport.name }}
+                </option>
+              </select>
+            </div>
+  
+            <div class="col-md-6">
+              <label for="destinationAirportId" class="form-label">İniş Havaalanı</label>
+              <select
+                class="form-control bg-dark text-white border-secondary"
+                id="destinationAirportId"
+                [(ngModel)]="updateRoute.destinationAirportId"
+                name="destinationAirportId"
+                required
+              >
                 <option value="" disabled>Havaalanı seçin</option>
-                <option *ngFor="let airport of airports" [value]="airport.id">{{ airport.name }}</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>Uçuş Yüksekliği (feet)</label>
-            <input type="number" class="form-control" id="distanceInMiles"
-                [(ngModel)]="updateRoute.distanceInMiles" name="distanceInMiles">
-        </div>
-    
-    
-        <button class="btn btn-success" type="submit">Kaydet</button>
-    </form>
+                <option *ngFor="let airport of airports" [value]="airport.id">
+                  {{ airport.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="form-group mb-3">
+            <label for="distanceInMiles" class="form-label">Uçuş Yüksekliği (feet)</label>
+            <input
+              type="number"
+              class="form-control bg-dark text-white border-secondary"
+              id="distanceInMiles"
+              placeholder="Yüksekliği girin"
+              [(ngModel)]="updateRoute.distanceInMiles"
+              name="distanceInMiles"
+              required
+            />
+          </div>
+  
+          <div class="d-grid mt-4">
+            <button class="btn btn-lg btn-success shadow-sm" type="submit">
+              Kaydet
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
+  
